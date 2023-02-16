@@ -26,7 +26,7 @@ declare global {
 }
 
 app.get("/", (req, res) => {
-  res.send("Hi hello");
+  res.json("hello")
 });
 
 //Redirect /user to UserRoute
