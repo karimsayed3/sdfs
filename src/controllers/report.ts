@@ -23,7 +23,6 @@ const getReport: RequestHandler = async (req, res, next) => {
       const err = new ProjectError("Report not found");
       err.statusCode = 404;
       throw err;
-      
     }
 
     let resp: ReturnResponse = {
