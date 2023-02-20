@@ -70,6 +70,7 @@ app.use(
   }
 );
 
+
 mongoose.set('strictQuery', true);
 
 mongoose.connect(connectionString, (err) => {
@@ -80,8 +81,7 @@ mongoose.connect(connectionString, (err) => {
   else{
     console.log("connected")
   }
- var port = process.env.PORT
-  app.listen(port || 5000, () => {
-    console.log("Server Connectedon port " + port);
+  app.listen( process.env.PORT || 5000, () => {
+    console.log("Server Connectedon port ");
   });
 });
