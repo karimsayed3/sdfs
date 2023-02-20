@@ -45,7 +45,7 @@ const submitExam: RequestHandler = async (req, res, next) => {
     const attempted_question = req.body.attempted_question;
 
     const quiz = await Quiz.findById(quizId, { answers: 1 });
-    const answers = quiz.answers;
+    const answers = quiz!.answers;
 
     const userId = req.userId;
     const allQuestions = Object.keys(answers);
@@ -85,7 +85,7 @@ const doesQuizExist = async (quizId:Mongoose["Types"]["ObjectId"])=>{
 
 const isValidAttempt = async (attempted_question:{},quizId:Mongoose["Types"]["ObjectId"])=>{
   const quiz= await Quiz.findById(quizId);
-  const answers=quiz.answers;
+  const answers=quiz!.answers;
   const questions=Object.keys(answers);
   const attemptQ=Object.keys(attempted_question);
   if(attemptQ.length!=questions.length)

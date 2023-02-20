@@ -70,13 +70,18 @@ app.use(
   }
 );
 
+mongoose.set('strictQuery', true);
+
 mongoose.connect(connectionString, (err) => {
   if (err) {
     console.log(err);
     return;
   }
+  else{
+    console.log("connected")
+  }
  var port = process.env.PORT
-  app.listen(port || 3000, () => {
+  app.listen(5000, () => {
     console.log("Server Connectedon port " + port);
   });
 });
