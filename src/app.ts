@@ -81,7 +81,7 @@ mongoose.connect(connectionString, (err) => {
     console.log("connected")
   }
  var port = process.env.PORT
-  app.listen(5000, () => {
+  app.listen(port || 5000, () => {
     console.log("Server Connectedon port " + port);
   });
 });
