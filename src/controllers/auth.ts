@@ -20,7 +20,7 @@ const registerUser: RequestHandler = async (req, res, next) => {
     const name = req.body.name;
     let password = await bcrypt.hash(req.body.password, 12);
 
-    const user = new User({ email, name, password });
+    const user = new User({ email, name, password});
     const result = await user.save();
     if (!result) {
       resp = { status: "error", message: "No result found", data: {} };
@@ -66,7 +66,6 @@ const loginUser: RequestHandler = async (req, res, next) => {
     //then decide
     if (status) {
       const token = jwt.sign({ userId: user._id }, "secretmyverysecretkey", {
-        expiresIn: "1h",
       });
       resp = { status: "success", message: "Logged in", data: { token , user} };
       res.status(200).send(resp);
@@ -105,7 +104,6 @@ const activateUser: RequestHandler = async (req, res, next) => {
     }
 
     const emailToken = jwt.sign({ userId: user._id }, "secretmyverysecretkey", {
-      expiresIn: "5m",
     });
 
     const message = `${process.env.BASE_URL}user/activate/${emailToken}`;

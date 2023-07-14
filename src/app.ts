@@ -4,9 +4,10 @@ import mongoose from "mongoose";
 
 import UserRoute from "./routes/user";
 import authRoute from "./routes/auth";
-import quizRoute from "./routes/quiz";
-import examRoute from "./routes/exam";
-import reportRoute from "./routes/report";
+import categoryRoute from "./routes/category";
+import courseRoute from "./routes/course";
+import lessonRoute from "./routes/lesson";
+import favouriteRoute from "./routes/favourite";
 
 import ProjectError from "./helper/error";
 import { ReturnResponse } from "./utils/interfaces";
@@ -37,13 +38,15 @@ app.use("/user", UserRoute);
 app.use("/auth", authRoute);
 
 //Redirect /quiz
-app.use("/quiz", quizRoute);
+app.use("/category", categoryRoute);
 
 //Redirect /exam
-app.use("/exam", examRoute);
+app.use("/course", courseRoute);
 
 //Redirect /report
-app.use("/report", reportRoute);
+app.use("/lesson", lessonRoute);
+
+app.use("/favourite", favouriteRoute);
 
 app.use(
   (err: ProjectError, req: Request, res: Response, next: NextFunction) => {

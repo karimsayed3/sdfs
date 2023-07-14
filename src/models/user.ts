@@ -17,10 +17,6 @@ const userSchema = new schema(
       type: String,
       required: true,
     },
-    // type: {
-    //   type: String,
-    //   required: true,
-    // },
     isDeactivated: {
       type: Boolean,
       default: false,
@@ -33,7 +29,7 @@ const userSchema = new schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("registration", userSchema);
 //model
 
 export default User;
